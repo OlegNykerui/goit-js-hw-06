@@ -13,12 +13,26 @@ const images = [
   },
 ];
 
-const findGallery = document.querySelector(".gallery");
+// const findGallery = document.querySelector(".gallery");
 
-images.map((img) => {
-  findGallery.insertAdjacentHTML(
-    "afterbegin",
-    `<li><img src = '${img.url}' alt = '${img.alt}' width = 200  height = 200  </li> `
-  );
-});
-console.log(findGallery);
+// images.map((img) => {
+//   findGallery.insertAdjacentHTML(
+//     "afterbegin",
+//     `<li><img src = '${img.url}' alt = '${img.alt}' width = 200  height = 200  </li> `
+//   );
+// });
+// console.log(findGallery);
+
+const galleryEl = document.querySelector(".gallery");
+const markup = images
+  .map(
+    ({ url, alt }) => `
+    <li class="gallery__item" > 
+    <img class="gallery__img" src="${url}" alt="${alt}" width="500" height="330"> 
+    </li>`
+  )
+  .join("");
+
+galleryEl.insertAdjacentHTML("beforeend", markup);
+
+console.log(galleryEl);
